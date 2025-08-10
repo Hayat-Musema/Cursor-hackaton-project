@@ -319,7 +319,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initKeyboardNavigation();
     initPerformanceMonitoring();
     
-    console.log('Tech Hub Ethiopia website initialized successfully!');
+    console.log('Ha-Tech Ethiopia website initialized successfully!');
 });
 
 // Handle page visibility changes
