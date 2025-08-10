@@ -70,6 +70,59 @@ function initActiveNavigation() {
     });
 }
 
+// Sliding underline (magic line) between pages and on hover
+function initMagicLineNav() {
+    const navList = document.querySelector('.nav-list');
+    const links = document.querySelectorAll('.nav-link');
+    if (!navList || !links.length) return;
+
+    // Create magic line if not present
+    let magic = document.querySelector('.nav-magic-line');
+    if (!magic) {
+        magic = document.createElement('span');
+        magic.className = 'nav-magic-line';
+        navList.appendChild(magic);
+    }
+
+    function setFromLink(link, animate = true) {
+        const rect = link.getBoundingClientRect();
+        const parentRect = navList.getBoundingClientRect();
+        const left = rect.left - parentRect.left + navList.scrollLeft;
+        const width = rect.width;
+        if (!animate) magic.style.transition = 'none';
+        magic.style.left = `${left}px`;
+        magic.style.width = `${width}px`;
+        // force reflow to re-enable transition next time
+        if (!animate) {
+            void magic.offsetWidth; 
+            magic.style.transition = '';
+        }
+    }
+
+    // Restore last page's link position for entry animation
+    const lastHref = sessionStorage.getItem('magic:lastHref');
+    const active = document.querySelector('.nav-link.active') || links[0];
+    const lastLink = lastHref ? Array.from(links).find(a => a.getAttribute('href') === lastHref) : null;
+
+    if (lastLink) setFromLink(lastLink, false);
+    // Animate to active after first frame
+    requestAnimationFrame(() => setFromLink(active, true));
+
+    // Hover interactions
+    links.forEach(link => {
+        link.addEventListener('mouseenter', () => setFromLink(link, true));
+        link.addEventListener('focus', () => setFromLink(link, true));
+        link.addEventListener('mouseleave', () => setFromLink(active, true));
+        link.addEventListener('blur', () => setFromLink(active, true));
+        link.addEventListener('click', () => {
+            sessionStorage.setItem('magic:lastHref', link.getAttribute('href'));
+        });
+    });
+
+    // Recalculate on resize
+    window.addEventListener('resize', () => setFromLink(document.querySelector('.nav-link.active') || active, true));
+}
+
 // Smooth Scrolling for Anchor Links
 function initSmoothScrolling() {
     const links = document.querySelectorAll('a[href^="#"]');
@@ -343,6 +396,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initThemeToggle();
     initHamburgerMenu();
     initActiveNavigation();
+    initMagicLineNav();
     initSmoothScrolling();
     initScrollAnimations();
     initSectionNavigation();
