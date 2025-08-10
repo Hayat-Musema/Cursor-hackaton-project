@@ -325,7 +325,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Handle page visibility changes
 document.addEventListener('visibilitychange', () => {
     if (document.hidden) {
-        document.title = 'Tech Hub Ethiopia - Come back! 👋';
+        document.title = 'Ha-Tech Ethiopia - Come back! 👋';
     } else {
         document.title = document.title.replace(' - Come back! 👋', '');
     }

@@ -528,20 +528,21 @@ body {
 
 /* Page-specific styles for other pages */
 .page-header {
-    background-color: var(--surface-color);
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    color: white;
     padding: 3rem 0;
     text-align: center;
 }
 
 .page-header h1 {
     font-size: 2.5rem;
-    color: var(--text-primary);
+    color: white;
     margin-bottom: 1rem;
 }
 
 .page-header p {
     font-size: 1.1rem;
-    color: var(--text-secondary);
+    color: rgba(255, 255, 255, 0.9);
     max-width: 600px;
     margin: 0 auto;
 }
