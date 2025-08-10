@@ -107,12 +107,45 @@ function initScrollAnimations() {
     }, observerOptions);
 
     // Observe elements for animation
-    const animatedElements = document.querySelectorAll('.feature-card, .content-card, .about-text');
+    const animatedElements = document.querySelectorAll('.feature-card, .content-card, .about-text, .content-section, .page-header');
     animatedElements.forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(20px)';
         el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         observer.observe(el);
+    });
+}
+
+// In-page Section Navigation (active link highlighting)
+function initSectionNavigation() {
+    const sectionNavLinks = document.querySelectorAll('.section-nav a[href^="#"]');
+    if (!sectionNavLinks.length) return;
+
+    const idToLinkMap = {};
+    sectionNavLinks.forEach(link => {
+        const id = link.getAttribute('href').slice(1);
+        if (id) idToLinkMap[id] = link;
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const id = entry.target.id;
+            if (!id) return;
+            if (entry.isIntersecting) {
+                sectionNavLinks.forEach(l => l.classList.remove('active'));
+                const activeLink = idToLinkMap[id];
+                if (activeLink) activeLink.classList.add('active');
+            }
+        });
+    }, {
+        root: null,
+        rootMargin: '-40% 0px -50% 0px',
+        threshold: 0.1
+    });
+
+    Object.keys(idToLinkMap).forEach(id => {
+        const section = document.getElementById(id);
+        if (section) observer.observe(section);
     });
 }
 
@@ -312,6 +345,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initActiveNavigation();
     initSmoothScrolling();
     initScrollAnimations();
+    initSectionNavigation();
     initFormValidation();
     initSearch();
     initLazyLoading();

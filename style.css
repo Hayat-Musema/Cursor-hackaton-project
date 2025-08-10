@@ -547,12 +547,50 @@ body {
     margin: 0 auto;
 }
 
+/* In-page Section Navigation (Introduction) */
+.section-nav {
+    position: sticky;
+    top: 70px; /* header height */
+    background-color: var(--surface-color);
+    border-bottom: 1px solid var(--border-color);
+    z-index: 900;
+}
+
+.section-nav .section-nav-inner {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding: 0.75rem 0;
+}
+
+.section-nav .section-link {
+    flex: 0 0 auto;
+    text-decoration: none;
+    color: var(--text-primary);
+    font-weight: 600;
+    padding: 0.5rem 0.9rem;
+    border-radius: 999px;
+    position: relative;
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.section-nav .section-link:hover {
+    background-color: var(--header-bg);
+}
+
+.section-nav .section-link.active {
+    color: var(--primary-color);
+    background-color: rgba(37, 99, 235, 0.08); /* matches --primary-color tint */
+}
+
 .page-content {
     padding: 3rem 0;
 }
 
 .content-section {
     margin-bottom: 3rem;
+    /* Offset for sticky header and section nav when using anchor links */
+    scroll-margin-top: 110px;
 }
 
 .content-section h2 {
