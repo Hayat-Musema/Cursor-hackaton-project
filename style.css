@@ -202,7 +202,7 @@ body {
 .hero {
     position: relative;
     color: white;
-    padding: 4rem 0;
+    padding: 5rem 0;
     text-align: center;
     background: linear-gradient(135deg, var(--hero-overlay-start), var(--hero-overlay-end)), url('img1.jpg') center/cover no-repeat fixed;
 }
@@ -368,16 +368,13 @@ body {
     align-items: center;
 }
 
-.image-placeholder {
-    width: 300px;
-    height: 300px;
-    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+.about-image img.about-photo {
+    width: 100%;
+    max-width: 420px;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
     border-radius: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 4rem;
+    box-shadow: 0 8px 24px var(--shadow-color);
 }
 
 /* Footer */
@@ -528,21 +525,15 @@ body {
         padding: 0 15px;
     }
 
-    .hero {
-        padding: 2rem 0;
-    }
+    .hero { padding: 3rem 0; }
 
     .hero h1 {
         font-size: 1.8rem;
     }
 
-    .features {
-        padding: 2rem 0;
-    }
+    .features { padding: 2.5rem 0; }
 
-    .about-preview {
-        padding: 2rem 0;
-    }
+    .about-preview { padding: 2.5rem 0; }
 
     .image-placeholder {
         width: 200px;
@@ -555,7 +546,7 @@ body {
 .page-header {
     background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
     color: white;
-    padding: 3rem 0;
+    padding: 5rem 0;
     text-align: center;
 }
 
