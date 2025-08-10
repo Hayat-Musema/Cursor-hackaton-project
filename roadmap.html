@@ -7,31 +7,51 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body>
+<body class="light-theme">
     <!-- Header -->
     <header class="header">
-        <div class="header-content">
+        <div class="header-container">
             <div class="logo">
                 <h1>Ha-Tech Ethiopia</h1>
             </div>
-            <nav class="nav-menu">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="introduction.html" class="nav-link">Introduction</a>
-                <a href="ethiopia-tech.html" class="nav-link">Ethiopia Tech Scene</a>
-                <a href="global-trends.html" class="nav-link">Global Tech Trends</a>
-                <a href="developer-tools.html" class="nav-link">Developer Tools</a>
-                <a href="universities.html" class="nav-link">Universities</a>
-                <a href="resources.html" class="nav-link">Resources</a>
-                <a href="roadmap.html" class="nav-link">Roadmap</a>
+            
+            <nav class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="introduction.html" class="nav-link">Introduction</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="ethiopia-tech.html" class="nav-link">Ethiopia Tech Scene</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="global-trends.html" class="nav-link">Global Tech Trends</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="developer-tools.html" class="nav-link">Developer Tools</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="universities.html" class="nav-link">Universities</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="resources.html" class="nav-link">Resources</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="roadmap.html" class="nav-link active">Roadmap</a>
+                    </li>
+                </ul>
             </nav>
+
             <div class="header-controls">
-                <button class="theme-toggle" aria-label="Toggle theme">
+                <button class="theme-toggle" id="theme-toggle">
                     <i class="fas fa-moon"></i>
                 </button>
-                <button class="hamburger-menu" aria-label="Toggle menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                <button class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
                 </button>
             </div>
         </div>
@@ -39,11 +59,14 @@
 
     <!-- Main Content -->
     <main class="main-content">
-        <div class="container">
-            <section class="page-header">
+        <section class="page-header">
+            <div class="container">
                 <h1>Tech Career Roadmap</h1>
                 <p>Navigate your journey in Ethiopia's tech ecosystem with our comprehensive career roadmap</p>
-            </section>
+            </div>
+        </section>
+
+        <div class="container">
 
             <section class="roadmap-section">
                 <h2>Beginner Level (0-2 years)</h2>

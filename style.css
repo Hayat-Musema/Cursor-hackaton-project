@@ -12,6 +12,9 @@
     --shadow-color: rgba(0, 0, 0, 0.1);
     --header-bg: #ffffff;
     --footer-bg: #f1f5f9;
+    /* Hero overlay colors (with opacity) */
+    --hero-overlay-start: rgba(37, 99, 235, 0.75); /* matches --primary-color */
+    --hero-overlay-end: rgba(245, 158, 11, 0.75);  /* matches --accent-color */
 }
 
 /* Dark Theme Colors */
@@ -27,6 +30,8 @@
     --shadow-color: rgba(0, 0, 0, 0.3);
     --header-bg: #1e293b;
     --footer-bg: #0f172a;
+    --hero-overlay-start: rgba(59, 130, 246, 0.8);
+    --hero-overlay-end: rgba(251, 191, 36, 0.8);
 }
 
 /* Reset and Base Styles */
@@ -195,10 +200,11 @@ body {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    position: relative;
     color: white;
     padding: 4rem 0;
     text-align: center;
+    background: linear-gradient(135deg, var(--hero-overlay-start), var(--hero-overlay-end)), url('img1.jpg') center/cover no-repeat fixed;
 }
 
 .hero-content {
